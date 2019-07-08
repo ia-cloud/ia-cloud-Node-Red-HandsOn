@@ -1,0 +1,13 @@
+[Unit]
+Description = excute ia-cloud start up script
+After=local-fs.target
+ConditionPathExists=/opt/ia-cloud/bin
+
+[Service]
+ExecStart=/opt/ia-cloud/bin/ia-cloud-hands-on-start.sh
+Restart=no
+Type=simple
+
+
+[Install]
+WantedBy=multi-user.target

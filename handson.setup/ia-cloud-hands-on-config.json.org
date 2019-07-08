@@ -1,0 +1,7 @@
+{
+  "name" : "RaspberryPi configuration at the first boot",
+  "comment" : "test for configuration procedure",
+	"lan-config" : { "ip-address" : "192.168.xx.xx/24", "default-gateway" : "192.168.xx.xx" },
+	"wifi-config" : { "type" : "wep", "ssid" : "ssid文字列", "password" : "password文字列" },
+	"hostname" : "hostnameを設定"
+}
