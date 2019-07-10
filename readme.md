@@ -9,6 +9,7 @@
 
 ### マスターマイクロSDカードの作成
 - Raspbian公式サイトから、イメージファイルをダウンロード。(2019年7月時点では、Buster Desktop版を利用)
+- 最新版Busterは、Node-REDのインストールスクリプトが、Node.jsインストール時に、npmがないとのエラーを吐いて止まってしまうため、後述のインストールスクリプト実行前に、atp-getのupdateコマンドを実行する必要がある。
 - マイクロSDカードにイメージを展開
 
 ### Node-RED（core）のインストールスクリプトの準備
@@ -20,7 +21,6 @@ bash <(curl -sL https://raw.githubusercontent.com/node-red/raspbian-deb-package/
 から、curlしたスクリプトをファイル化し、使用するNode-REDのバージョンを@latestから、@0.19.4 に変更したものである。  
 /node-red-install/node-red-install.org が変更前のスクリプトである。  
 このスクリプトは、Node.js、npmのインストールなど全てを含んでいる。
-- /bootにコピーすると、ファイルのパーミッションが755になるらしい。　＜ーーー確認要
 
 ### RaspberryPiのネットワーク設定スクリプトおよび設定データを準備する　　
 raspbian起動時にネットワーク設定変更のスクリプトを走らせるため、
@@ -65,7 +65,8 @@ WantedBy=multi-user.target
 - Busterの初期画面が起動。初期設定画面に従い、インストールを継続
 - countryをJAPANに設定
 - piユーザのパスワード変更を求められるが無視して続行
-- ネットワークの設定は、インストール実行時の環境で設定（LANはデフォルトでDHCP有効担っている。Wifiに場合はここで設定）
+- モニタスクリーンのアンダースキャンの確認：どっちでも良い。
+- ネットワークの設定は、インストール実行時の環境で設定（LANはデフォルトでDHCP有効になっている。Wifiに場合はここで設定）
 - アップデートで、少々時間がかかる。アップデート後再起動。
 - 再起動後、Busterのデスクトップ画面が起動する。
 - Raspbianのメインメニューから、設定 -> RaspberryPiの設定　を起動
@@ -75,12 +76,17 @@ WantedBy=multi-user.target
 - 再起動後、ユーザpiのパスワードを変更していないとの警告が出るが、ここは無視。
 
 
-### ia-cloud関連カスタムNodeとその依存コード類のインストール  
+### ia-cloud関連カスタムNodeとその依存コード類のインストール（RaspberryPiのコンソールから操作）
 
-以下のコマンドラインで、必要なモジュールをインストールする
+Raspbian Busterでのインストールスクリプト前に、以下のコマンドでaptをupdateする。
+```
+sudo apt update          // aptのupdateコマンド
+```
+以下のコマンドラインで、必要なJSONハンドリングモジュールをインストールする
 ```
 sudo apt-get install jq          // JSON処理シェルコマンド
 ```
+Node.js npm Node-REDを一括インストールするスクリプトを実行
 ```
 /boot/node-red-install.sh        // Node.jsとnom、Node-REDのインストール		
 ```
@@ -94,7 +100,7 @@ cd ~/.node-red; npm install ia-cloud/node-red-contrib-ia-cloud-fds   // ia-cloud
 cd ~/.node-red; npm install ia-cloud/node-red-contrib-ia-cloud-dashboard   // ia-cloud-dashboardのインストール
 
 ```
-以上の3つのモジュールのインストールは、^/.node-red ディレクトリーで実行する必要があるので注意。  
+以上の3つのモジュールのインストールは、~/.node-red ディレクトリーで実行する必要があるので注意。  
 
 ここまでで、Node-REDと必要なNodeモジュールがインストールされた。Node-REDを起動しブラウザーで接続すると、パレット上にia-cloud関連Nodeと、GrovePiのNodeが現れる。
 
@@ -106,7 +112,6 @@ raspbian起動時にネットワーク設定変更のスクリプトを走らせ
 ```
 sudo mkdir -p /opt/ia-cloud/bin
 sudo mv /boot/ia-cloud-hands-on-start.sh /opt/ia-cloud/bin/
-/boot からコピーした時のパーミションは？　chown と　chmod が必要か？
 ```
 #### /boot/ia-cloud-hands-on-start.service.orgを/etc/systemd/system/に移動し、ia-cloud-hands-on-start.serviceに名称変更する。
 ```
@@ -121,6 +126,8 @@ sudo systemctl daemon-reload
 sudo systemctl enable ia-cloud-hands-on-start.service
 ```
 
+マスターSDカードの作癖は終了。
+シャットダウンし、マイクロSDカードを取り出す。
 
 ## ハンズオンWS用の個別の起動マイクロSDカードの作成（PC or Mac での作業）
 
