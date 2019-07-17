@@ -8,6 +8,5 @@ ExecStart=/opt/ia-cloud/bin/ia-cloud-hands-on-start.sh
 Restart=no
 Type=simple
 
-
 [Install]
 WantedBy=multi-user.target

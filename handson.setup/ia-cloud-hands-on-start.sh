@@ -5,13 +5,8 @@
 config_file="/boot/ia-cloud-hands-on-config.json"
 log_file="/var/log/ia-cloud-hands-on-start.log"
 
-# 新たなログファイルを作成
-date > $log_file
-{
-  echo "set ip-configuration and Wi-fi configration and hostname"
-  echo ""
-  cat $config_file
-} >> $log_file
+# ログファイルにログを追記
+
 
 # 設定変更するファイルを変数にセット
 ip_conf_file="/etc/dhcpcd.conf"
@@ -21,6 +16,13 @@ hosts_file="/etc/hosts"
 
 # ia-cloud 設定ファイルが存在したら
 if [ -r $config_file ]; then
+
+  date > $log_file
+  {
+    echo "set ip-configuration and Wi-fi configration and hostname"
+    echo ""
+    cat $config_file
+  } >> $log_file
 
     # 固定IP設定があれば
     lan=`cat $config_file | jq -r '."lan-config"'`
@@ -45,8 +47,6 @@ if [ -r $config_file ]; then
 
     # Wifi設定があれば
     wifi=`cat $config_file | jq -r '."wifi-config"'`
-
-
     if [ -n "$wifi" ]; then
 
         # wifi設定をログファイルに
@@ -92,6 +92,7 @@ if [ -r $config_file ]; then
         fi
     fi
 
+    # ホストネイム設定があれば
     hostname=`cat $config_file | jq -r '."hostname"'`
     if [ -n $hostname ]; then
         # ホストネイム設定があればログファイルへ
@@ -106,11 +107,11 @@ if [ -r $config_file ]; then
           fi
         fi
     fi
+
     # 設定ファイルの名称を変更
     mv $config_file $config_file.org
+
     # 設定を有効化するため、再起動
     shutdown -r now
 
 fi
-
-echo "ia-cloud-hands-on-start.sh ends" >> $log_file
