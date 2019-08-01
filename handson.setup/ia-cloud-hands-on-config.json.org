@@ -1,7 +1,15 @@
 {
-  "name" : "RaspberryPi configuration at the first boot",
-  "comment" : "test for configuration procedure",
-	"lan-config" : { "ip-address" : "192.168.xx.xx/24", "default-gateway" : "192.168.xx.xx" },
-	"wifi-config" : { "type" : "wep", "ssid" : "xxxxxxxxxx", "password" : "xxxxxxxxx" },
-	"hostname" : "xxxxxxxxx"
+    "name": "RaspberryPi configuration at the first boot",
+    "comment": "test for configuration procedure",
+    
+    "lan-config": {
+        "ip-address": "192.168.xx.xx/24",
+        "default-gateway": "0.0.0.0"
+    },
+    "wifi-config": {
+        "type": "wpa",
+        "ssid": "xxxxxxxxxx",
+        "password": "xxxxxxxxx"
+    },
+    "hostname": "xxxxxxxxx"
 }

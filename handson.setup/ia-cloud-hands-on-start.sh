@@ -61,10 +61,6 @@ if [ -r $config_file ]; then
             # wifi暗号化wepの場合
             if [ $type == "wep" ]; then
                 {
-                  echo "country=JP"
-                  echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev"
-                  echo "update_config=1"
-                  echo ""
                   echo ""
                   echo "network={"
                   echo "    ssid=\"$ssid\""
@@ -72,22 +68,19 @@ if [ -r $config_file ]; then
                   echo "    wep_key0=\"$password\""
                   echo "}"
                   echo ""
-                } > $wifi_conf_file
+                } >> $wifi_conf_file
             fi
             # wifi暗号化WPAの場合
             if [ $type == "wpa" ]; then
                 {
-                  echo "country=JP"
-                  echo "ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev"
-                  echo "update_config=1"
-                  echo ""
                   echo ""
                   echo "network={"
                   echo "    ssid=\"$ssid\""
+                  echo "    key_mgmt=WPA-PSK"
                   echo "    psk=\"$password\""
                   echo "}"
                   echo ""
-                } > $wifi_conf_file
+                } >> $wifi_conf_file
             fi
         fi
     fi
@@ -100,10 +93,12 @@ if [ -r $config_file ]; then
 
         if [ -w $hostname_file ]; then
           if [ -w $hosts_file ]; then
-
             echo $hostname > $hostname_file
-            echo 127.0.0.1 $hostname >> $hosts_file
-            sed -i -e /raspberrypi/d $hosts_file
+            sed -i -e /127\.0\.1\.1/d $hosts_file
+            {
+              echo -n "127.0.0.1"
+              echo $hostname
+            } >> $hosts_file
           fi
         fi
     fi

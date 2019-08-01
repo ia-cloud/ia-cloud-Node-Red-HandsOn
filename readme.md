@@ -63,18 +63,21 @@ WantedBy=multi-user.target
 このファイルの内容は以下である。
 ```
 {
-  "name" : "RaspberryPi configuration at the first boot",
-  "comment" : "test for configuration procedure",
-  "lan-config" : { "ip-address" : "192.168.xx.xx/24", "default-gateway" : "192.168.xx.xx" },
-  "wifi-config" : { "type" : "wep", "ssid" : "xxxxxxxxxx", "password" : "xxxxxxxxx" },
-  "hostname" : "xxxxxxxxx"
+    "name": "RaspberryPi configuration at the first boot",
+    "comment": "test for configuration procedure",
+
+    "lan-config": {
+        "ip-address": "192.168.xx.xx/24",
+        "default-gateway": "0.0.0.0"
+    },
+    "wifi-config": {
+        "type": "wpa",
+        "ssid": "xxxxxxxxxx",
+        "password": "xxxxxxxxx"
+    },
+    "hostname": "xxxxxxxxx"
 }
 ```
-
-#### Raspbianの初回起動時に実行される、/boot/cmdline.txtのコピーを保存する
-
-Raspbianの /boot 直下にある、cmdline.txt を、cmdline.txt.org にコピーする
-このファイルは、Raspbianの起動時に実行されるコマンドファイルである。初回起動時にSDカードのパーティションの拡張を行い、そのスクリプト起動コマンドを削除してしまうので、コピーDisk作成時に復元するため、コピーを保存する。
 
 #### Node-RED環境や起動時実行の環境など一連の操作をまとめたスクリプトを配置する。
 
@@ -121,16 +124,6 @@ Node.js npm Node-REDを一括インストールするスクリプトを実行
 Node-REDのインストールでは、二つの確認メッセージが出るが、いずれも「ｙ」を入力
 このインストールスクリプトの処理には、十数分かかる。  
 スクリプトが完了すると、Raspbianのメインメニューのプログラミングに、node-REDが現れ、起動できるようになる.
-
-```
-cd ~/.node-red; npm install node-red-contrib-grovepi   	// Grovepiのインストール
-cd ~/.node-red; npm install ia-cloud/node-red-contrib-ia-cloud-fds   // ia-cloud-fdsのインストール
-cd ~/.node-red; npm install ia-cloud/node-red-contrib-ia-cloud-dashboard   // ia-cloud-dashboardのインストール
-
-```
-以上の3つのモジュールのインストールは、~/.node-red ディレクトリーで実行する必要があるので注意。  
-
-ここまでで、Node-REDと必要なNodeモジュールがインストールされた。Node-REDを起動しブラウザーで接続すると、パレット上にia-cloud関連Nodeと、GrovePiのNodeが現れる。
 
 ### RaspberryPiのネットワーク設定スクリプトおよび設定データを配置する
 
@@ -271,3 +264,7 @@ The filesystem on /dev/mmcblk0p2 is now 7751424 (4k) blocks long.
 - ファイル名ia-cloud-hands-on-config.json.orgをia-cloud-hands-on-config.jsonに変更する。
 
 **Raspbianを再起動すると、新しい設定が反映され、個別のSDカードが完成する。**
+
+## ハンズオンワークショップでの、Node-RED node のインストール
+
+ハンズオンワークショップでは、冒頭のNode-RED環境の立ち上げ直後に、以下のNodeモジュールをNode-RED環境のパレット管理メニューからインストールする。これは、受講生にNode-RED環境のアップデートハンズオン実習として実施するのが良い。
