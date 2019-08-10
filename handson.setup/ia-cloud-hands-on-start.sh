@@ -96,7 +96,7 @@ if [ -r $config_file ]; then
             echo $hostname > $hostname_file
             sed -i -e /127\.0\.1\.1/d $hosts_file
             {
-              echo -n "127.0.0.1"
+              echo -en "127.0.1.1 \t"
               echo $hostname
             } >> $hosts_file
           fi
