@@ -1,0 +1,205 @@
+[
+  {
+      "id": "67997fd.2fb2e8",
+      "type": "tab",
+      "label": "EnOcean",
+      "disabled": false,
+      "info": ""
+  },
+  {
+      "id": "a6a646cf.b67e98",
+      "type": "EnOcean-obj",
+      "z": "67997fd.2fb2e8",
+      "name": "OPTEX Rocker Sensor",
+      "confsel": "propertySet",
+      "configfile": "",
+      "configdata": "",
+      "object_key": "optex.rocker.sensor",
+      "object_desc": "OPTEXロッカーセンサー",
+      "enoceancom": "955239c8.1690b8",
+      "sensor_kind": "optex_rocker",
+      "urd_ac_sensor": "",
+      "watty_temp_sensor": "",
+      "core_temp_sensor": "",
+      "itec_ac_sensor": "",
+      "optex_rocker_sw": "bf5cc63.5842338",
+      "optex_occupancy_sensor": "",
+      "objectConfig": "",
+      "configSel1": "",
+      "configSel2": "",
+      "selectSensor": "bf5cc63.5842338",
+      "x": 130,
+      "y": 60,
+      "wires": [
+          [
+              "c9847610.96ad38",
+              "278e5f5d.20229"
+          ]
+      ]
+  },
+  {
+      "id": "c9847610.96ad38",
+      "type": "debug",
+      "z": "67997fd.2fb2e8",
+      "name": "",
+      "active": true,
+      "tosidebar": true,
+      "console": false,
+      "tostatus": false,
+      "complete": "true",
+      "x": 410,
+      "y": 60,
+      "wires": []
+  },
+  {
+      "id": "278e5f5d.20229",
+      "type": "ia-cloud-cnct",
+      "z": "67997fd.2fb2e8",
+      "name": "ia-cloud-cnct",
+      "url": "https://d9u5112h1j.execute-api.us-east-1.amazonaws.com/handson/api/iaCloud/rev10",
+      "FDSKey": "Handson2019User0",
+      "comment": "",
+      "cnctRetryInterval": 60,
+      "tappingInterval": 24,
+      "x": 430,
+      "y": 120,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "3024089a.da4c78",
+      "type": "EnOcean-obj",
+      "z": "67997fd.2fb2e8",
+      "name": "Core-Staff Temperature Sensor",
+      "confsel": "propertySet",
+      "configfile": "",
+      "configdata": "",
+      "object_key": "core_staff.sensor",
+      "object_desc": "Core-Staff温湿度センサー",
+      "enoceancom": "955239c8.1690b8",
+      "sensor_kind": "core_staff",
+      "urd_ac_sensor": "",
+      "watty_temp_sensor": "fc0110d3.2066c",
+      "core_temp_sensor": "d50f549b.ee7008",
+      "itec_ac_sensor": "",
+      "optex_rocker_sw": "",
+      "optex_occupancy_sensor": "",
+      "objectConfig": "",
+      "configSel1": "",
+      "configSel2": "",
+      "selectSensor": "d50f549b.ee7008",
+      "x": 150,
+      "y": 120,
+      "wires": [
+          [
+              "278e5f5d.20229",
+              "c9847610.96ad38"
+          ]
+      ]
+  },
+  {
+      "id": "a5ecbf3d.1c478",
+      "type": "EnOcean-obj",
+      "z": "67997fd.2fb2e8",
+      "name": "OPTEX Occupancy Sensor",
+      "confsel": "propertySet",
+      "configfile": "",
+      "configdata": "",
+      "object_key": "optex.occupancy.sensor",
+      "object_desc": "OPTEX人感センサー",
+      "enoceancom": "955239c8.1690b8",
+      "sensor_kind": "optex_occupancy",
+      "urd_ac_sensor": "",
+      "watty_temp_sensor": "fc0110d3.2066c",
+      "core_temp_sensor": "d50f549b.ee7008",
+      "itec_ac_sensor": "",
+      "optex_rocker_sw": "",
+      "optex_occupancy_sensor": "7fd8d1d.ad43c3",
+      "objectConfig": "",
+      "configSel1": "",
+      "configSel2": "",
+      "selectSensor": "7fd8d1d.ad43c3",
+      "x": 140,
+      "y": 180,
+      "wires": [
+          [
+              "278e5f5d.20229"
+          ]
+      ]
+  },
+  {
+      "id": "955239c8.1690b8",
+      "type": "EnOcean-com",
+      "z": "",
+      "name": "EnOcean-com",
+      "serial": "24e228a4.e667a8"
+  },
+  {
+      "id": "bf5cc63.5842338",
+      "type": "Optex_Rocker_SW",
+      "z": "",
+      "name": "Optex Rocker Switch",
+      "sensor_id": "002E5CB6",
+      "dataname0": "エネルギースイッチ",
+      "dataname1": "スイッチ1",
+      "dataname2": "スイッチ2",
+      "dataname3": "スイッチ3",
+      "dataname4": "スイッチ4",
+      "configObject": "[{\"dataValue\":\"\",\"unitType\":null,\"dataname\":\"エネルギースイッチ\"},{\"dataValue\":\"\",\"unitType\":null,\"dataname\":\"スイッチ1\"},{\"dataValue\":\"\",\"unitType\":null,\"dataname\":\"スイッチ2\"},{\"dataValue\":\"\",\"unitType\":null,\"dataname\":\"スイッチ3\"},{\"dataValue\":\"\",\"unitType\":null,\"dataname\":\"スイッチ4\"}]"
+  },
+  {
+      "id": "fc0110d3.2066c",
+      "type": "Watty_Temp_Sensor",
+      "z": "",
+      "name": "Watty Temp_Sensor",
+      "sensor_id": "0400F5D8",
+      "dataname0": "温度1",
+      "unitType0": "℃",
+      "dataname1": "温度2",
+      "unitType1": "℃",
+      "dataname2": "温度3",
+      "unitType2": "℃",
+      "dataname3": "温度4",
+      "unitType3": "℃",
+      "configObject": "[{\"dataValue\":\"\",\"unitType\":\"℃\",\"dataname\":\"温度1\"},{\"dataValue\":\"\",\"unitType\":\"℃\",\"dataname\":\"温度2\"},{\"dataValue\":\"\",\"unitType\":\"℃\",\"dataname\":\"温度3\"},{\"dataValue\":\"\",\"unitType\":\"℃\",\"dataname\":\"温度4\"}]"
+  },
+  {
+      "id": "d50f549b.ee7008",
+      "type": "Core_Staff_Sensor",
+      "z": "",
+      "name": "Core_Staff Temp Sensor",
+      "sensor_id": "0581B0FE",
+      "dataname0": "湿度",
+      "unitType0": "％",
+      "dataname1": "温度",
+      "unitType1": "℃",
+      "configObject": "[{\"dataValue\":\"\",\"unitType\":\"％\",\"dataname\":\"湿度\"},{\"dataValue\":\"\",\"unitType\":\"℃\",\"dataname\":\"温度\"}]"
+  },
+  {
+      "id": "7fd8d1d.ad43c3",
+      "type": "Optex_Occupancy_Sensor",
+      "z": "",
+      "name": "Optex Occupancy Sensor",
+      "sensor_id": "05002CE3",
+      "dataname0": "供給電圧",
+      "unitType0": "V",
+      "dataname1": "在室状態",
+      "unitType1": "null",
+      "configObject": "[{\"dataValue\":\"\",\"unitType\":\"V\",\"dataname\":\"供給電圧\"},{\"dataValue\":\"\",\"unitType\":null,\"dataname\":\"在室状態\"}]"
+  },
+  {
+      "id": "24e228a4.e667a8",
+      "type": "ia-cloud-serial-port",
+      "z": "",
+      "serialport": "/dev/ttyUSB0",
+      "serialbaud": "57600",
+      "databits": "8",
+      "parity": "none",
+      "stopbits": "1",
+      "newline": "60",
+      "bin": "bin",
+      "out": "time",
+      "responsetimeout": 10000
+  }
+]
