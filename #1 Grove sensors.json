@@ -1,0 +1,450 @@
+[
+  {
+      "id": "bcdc3644.3530d8",
+      "type": "tab",
+      "label": "Groveセンサー",
+      "disabled": false,
+      "info": ""
+  },
+  {
+      "id": "d30c472b.a73568",
+      "type": "grove digital sensor",
+      "z": "bcdc3644.3530d8",
+      "name": "超音波距離センサー",
+      "board": "fde0ce0b.33055",
+      "sensor": "ultrasonic",
+      "repeat": "1",
+      "pin": "2",
+      "x": 110,
+      "y": 40,
+      "wires": [
+          [
+              "1468b105.55a45f",
+              "db692804.e2c268",
+              "9423b223.1f66c"
+          ]
+      ]
+  },
+  {
+      "id": "cdd10145.7bd95",
+      "type": "debug",
+      "z": "bcdc3644.3530d8",
+      "name": "",
+      "active": false,
+      "tosidebar": true,
+      "console": false,
+      "tostatus": false,
+      "complete": "false",
+      "x": 310,
+      "y": 180,
+      "wires": []
+  },
+  {
+      "id": "14e75015.5f4af",
+      "type": "grove digital sensor",
+      "z": "bcdc3644.3530d8",
+      "name": "温湿度センサー",
+      "board": "fde0ce0b.33055",
+      "sensor": "dht11",
+      "repeat": "2",
+      "pin": "3",
+      "x": 100,
+      "y": 180,
+      "wires": [
+          [
+              "cdd10145.7bd95",
+              "eaa78e4a.687bc",
+              "cfe62ffc.813ca",
+              "1464ceac.9a9921"
+          ]
+      ]
+  },
+  {
+      "id": "db692804.e2c268",
+      "type": "ui_chart",
+      "z": "bcdc3644.3530d8",
+      "name": "",
+      "group": "22b78ec7.f3f4c2",
+      "order": 1,
+      "width": 0,
+      "height": 0,
+      "label": "距離センサー",
+      "chartType": "line",
+      "legend": "false",
+      "xformat": "HH:mm:ss",
+      "interpolate": "linear",
+      "nodata": "",
+      "dot": false,
+      "ymin": "",
+      "ymax": "",
+      "removeOlder": 1,
+      "removeOlderPoints": "",
+      "removeOlderUnit": "3600",
+      "cutout": 0,
+      "useOneColor": false,
+      "colors": [
+          "#1f77b4",
+          "#aec7e8",
+          "#ff7f0e",
+          "#2ca02c",
+          "#98df8a",
+          "#d62728",
+          "#ff9896",
+          "#9467bd",
+          "#c5b0d5"
+      ],
+      "useOldStyle": false,
+      "outputs": 1,
+      "x": 320,
+      "y": 120,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "eaa78e4a.687bc",
+      "type": "change",
+      "z": "bcdc3644.3530d8",
+      "name": "温度を抽出",
+      "rules": [
+          {
+              "t": "set",
+              "p": "payload",
+              "pt": "msg",
+              "to": "payload.temperature",
+              "tot": "msg"
+          }
+      ],
+      "action": "",
+      "property": "",
+      "from": "",
+      "to": "",
+      "reg": false,
+      "x": 310,
+      "y": 240,
+      "wires": [
+          [
+              "8e55bf56.99c32",
+              "c6bbc96f.544dd8"
+          ]
+      ]
+  },
+  {
+      "id": "cfe62ffc.813ca",
+      "type": "change",
+      "z": "bcdc3644.3530d8",
+      "name": "湿度を抽出",
+      "rules": [
+          {
+              "t": "set",
+              "p": "payload",
+              "pt": "msg",
+              "to": "payload.humidity",
+              "tot": "msg"
+          }
+      ],
+      "action": "",
+      "property": "",
+      "from": "",
+      "to": "",
+      "reg": false,
+      "x": 310,
+      "y": 280,
+      "wires": [
+          [
+              "84f02b2.b048ed8"
+          ]
+      ]
+  },
+  {
+      "id": "8e55bf56.99c32",
+      "type": "debug",
+      "z": "bcdc3644.3530d8",
+      "name": "",
+      "active": false,
+      "tosidebar": true,
+      "console": false,
+      "tostatus": false,
+      "complete": "false",
+      "x": 510,
+      "y": 200,
+      "wires": []
+  },
+  {
+      "id": "1464ceac.9a9921",
+      "type": "gp2iac",
+      "z": "bcdc3644.3530d8",
+      "name": "gp2iac (変換)",
+      "objectkey": "Handson2019User0",
+      "sensortype": "dht11",
+      "dataname1": "温度",
+      "unit1": "℃",
+      "dataname2": "湿度",
+      "unit2": "%",
+      "dataname3": "ヒートインデックス",
+      "unit3": "HI",
+      "x": 310,
+      "y": 340,
+      "wires": [
+          [
+              "44f7afbe.482f",
+              "58e5d247.86f34c"
+          ]
+      ]
+  },
+  {
+      "id": "44f7afbe.482f",
+      "type": "debug",
+      "z": "bcdc3644.3530d8",
+      "name": "",
+      "active": false,
+      "tosidebar": true,
+      "console": false,
+      "tostatus": false,
+      "complete": "true",
+      "x": 490,
+      "y": 340,
+      "wires": []
+  },
+  {
+      "id": "84f02b2.b048ed8",
+      "type": "ui_chart",
+      "z": "bcdc3644.3530d8",
+      "name": "",
+      "group": "22b78ec7.f3f4c2",
+      "order": 3,
+      "width": 0,
+      "height": 0,
+      "label": "湿度センサーのグラフ",
+      "chartType": "line",
+      "legend": "false",
+      "xformat": "HH:mm:ss",
+      "interpolate": "linear",
+      "nodata": "",
+      "dot": false,
+      "ymin": "",
+      "ymax": "",
+      "removeOlder": 1,
+      "removeOlderPoints": "",
+      "removeOlderUnit": "3600",
+      "cutout": 0,
+      "useOneColor": false,
+      "colors": [
+          "#1f77b4",
+          "#aec7e8",
+          "#ff7f0e",
+          "#2ca02c",
+          "#98df8a",
+          "#d62728",
+          "#ff9896",
+          "#9467bd",
+          "#c5b0d5"
+      ],
+      "useOldStyle": false,
+      "outputs": 1,
+      "x": 540,
+      "y": 280,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "c6bbc96f.544dd8",
+      "type": "ui_chart",
+      "z": "bcdc3644.3530d8",
+      "name": "",
+      "group": "22b78ec7.f3f4c2",
+      "order": 2,
+      "width": 0,
+      "height": 0,
+      "label": "温度センサーのグラフ",
+      "chartType": "line",
+      "legend": "false",
+      "xformat": "HH:mm:ss",
+      "interpolate": "linear",
+      "nodata": "",
+      "dot": false,
+      "ymin": "",
+      "ymax": "",
+      "removeOlder": 1,
+      "removeOlderPoints": "",
+      "removeOlderUnit": "3600",
+      "cutout": 0,
+      "useOneColor": false,
+      "colors": [
+          "#1f77b4",
+          "#aec7e8",
+          "#ff7f0e",
+          "#2ca02c",
+          "#98df8a",
+          "#d62728",
+          "#ff9896",
+          "#9467bd",
+          "#c5b0d5"
+      ],
+      "useOldStyle": false,
+      "outputs": 1,
+      "x": 540,
+      "y": 240,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "1468b105.55a45f",
+      "type": "debug",
+      "z": "bcdc3644.3530d8",
+      "name": "",
+      "active": false,
+      "tosidebar": true,
+      "console": false,
+      "tostatus": false,
+      "complete": "false",
+      "x": 310,
+      "y": 40,
+      "wires": []
+  },
+  {
+      "id": "91128487.f21878",
+      "type": "change",
+      "z": "bcdc3644.3530d8",
+      "name": "オン",
+      "rules": [
+          {
+              "t": "set",
+              "p": "payload",
+              "pt": "msg",
+              "to": "true",
+              "tot": "bool"
+          }
+      ],
+      "action": "",
+      "property": "",
+      "from": "",
+      "to": "",
+      "reg": false,
+      "x": 510,
+      "y": 60,
+      "wires": [
+          [
+              "18ab97e0.3ae9b8"
+          ]
+      ]
+  },
+  {
+      "id": "9423b223.1f66c",
+      "type": "switch",
+      "z": "bcdc3644.3530d8",
+      "name": "近づいているか？",
+      "property": "payload",
+      "propertyType": "msg",
+      "rules": [
+          {
+              "t": "lt",
+              "v": "30",
+              "vt": "num"
+          },
+          {
+              "t": "else"
+          }
+      ],
+      "checkall": "true",
+      "repair": false,
+      "outputs": 2,
+      "x": 330,
+      "y": 80,
+      "wires": [
+          [
+              "91128487.f21878"
+          ],
+          [
+              "632194cc.be200c"
+          ]
+      ]
+  },
+  {
+      "id": "632194cc.be200c",
+      "type": "change",
+      "z": "bcdc3644.3530d8",
+      "name": "オフ",
+      "rules": [
+          {
+              "t": "set",
+              "p": "payload",
+              "pt": "msg",
+              "to": "false",
+              "tot": "bool"
+          }
+      ],
+      "action": "",
+      "property": "",
+      "from": "",
+      "to": "",
+      "reg": false,
+      "x": 510,
+      "y": 100,
+      "wires": [
+          [
+              "18ab97e0.3ae9b8"
+          ]
+      ]
+  },
+  {
+      "id": "18ab97e0.3ae9b8",
+      "type": "grove digital output",
+      "z": "bcdc3644.3530d8",
+      "name": "LED",
+      "board": "fac8e04b.44d56",
+      "pin": "5",
+      "x": 650,
+      "y": 80,
+      "wires": []
+  },
+  {
+      "id": "58e5d247.86f34c",
+      "type": "ia-cloud-cnct",
+      "z": "bcdc3644.3530d8",
+      "name": "ia-cloud-cnct",
+      "url": "https://d9u5112h1j.execute-api.us-east-1.amazonaws.com/handson/api/iaCloud/rev10",
+      "FDSKey": "Handson2019User0",
+      "comment": "",
+      "cnctRetryInterval": 60,
+      "tappingInterval": 24,
+      "x": 510,
+      "y": 380,
+      "wires": [
+          []
+      ]
+  },
+  {
+      "id": "fde0ce0b.33055",
+      "type": "board-config",
+      "z": "",
+      "board": "GrovePi"
+  },
+  {
+      "id": "22b78ec7.f3f4c2",
+      "type": "ui_group",
+      "z": "",
+      "name": "IoTセンサー",
+      "tab": "bc79a4c8.50d2d8",
+      "disp": true,
+      "width": "6",
+      "collapse": false
+  },
+  {
+      "id": "fac8e04b.44d56",
+      "type": "board-config",
+      "z": "",
+      "board": "GrovePi"
+  },
+  {
+      "id": "bc79a4c8.50d2d8",
+      "type": "ui_tab",
+      "z": "",
+      "name": "ダッシュボード",
+      "icon": "dashboard",
+      "disabled": false,
+      "hidden": false
+  }
+]
