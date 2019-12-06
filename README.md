@@ -9,3 +9,9 @@ https://d9u5112h1j.execute-api.us-east-1.amazonaws.com/handson/api/iaCloud/rev10
 
 AWS ログイン  
 https://510671781299.signin.aws.amazon.com/console  
+
+https://signin.aws.amazon.com/console  
+
+* アカウント: ``510671781299``
+* ユーザー名: ``Handson2019User``
+* パスワード: 配布されているもの
