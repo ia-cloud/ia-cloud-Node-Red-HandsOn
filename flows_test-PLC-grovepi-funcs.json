@@ -4,7 +4,7 @@
         "type": "tab",
         "label": "GrovePiテスト",
         "disabled": true,
-        "info": "ラズベリーパイに搭載したGrove-Piボードのセンサ類を使ったフロー\n"
+        "info": ""
     },
     {
         "id": "d4e805cf.0caf68",
