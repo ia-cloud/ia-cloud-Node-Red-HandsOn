@@ -1,0 +1,1737 @@
+[
+    {
+        "id": "f623f978.413298",
+        "type": "tab",
+        "label": "GrovePiテスト",
+        "disabled": true,
+        "info": "ラズベリーパイに搭載したGrove-Piボードのセンサ類を使ったフロー\n"
+    },
+    {
+        "id": "d4e805cf.0caf68",
+        "type": "tab",
+        "label": "ノギス計測テスト",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "3a0f9008.fe3fc",
+        "type": "tab",
+        "label": "PLCノードテスト",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "80dc006.af6d6",
+        "type": "tab",
+        "label": "機能ノードテスト",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "6cf68ba.0234374",
+        "type": "grovepi",
+        "z": "",
+        "name": "Grove-Piボード"
+    },
+    {
+        "id": "7c844f6c.a560e",
+        "type": "ia-cloud-ccs-connection-config",
+        "z": "",
+        "url": "https://d9u5112h1j.execute-api.us-east-1.amazonaws.com/handson/api/iaCloud/rev10",
+        "name": "User0接続"
+    },
+    {
+        "id": "1b32cfcb.8409e",
+        "type": "ui_tab",
+        "z": "",
+        "name": "ホーム",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "15990d03.1725d3",
+        "type": "ui_group",
+        "z": "",
+        "name": "GrovePiグラフ",
+        "tab": "1b32cfcb.8409e",
+        "order": 1,
+        "disp": true,
+        "width": "13",
+        "collapse": false
+    },
+    {
+        "id": "d157cd68.dd53",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED ダッシュボード",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "YYYY/MM/DD",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "86f9e211.c6541",
+        "type": "Mitsubishi-com",
+        "z": "",
+        "name": "",
+        "refreshCycle": "5",
+        "maxDataNum": "64",
+        "noBlank": false,
+        "comType": "TCP",
+        "TCPPort": "1025",
+        "IPAdd": "192.168.1.30",
+        "serialPort": "",
+        "baud": "115200",
+        "parity": "even",
+        "accessRoute": "",
+        "requiredSet": "ready"
+    },
+    {
+        "id": "7d4bd6f5.2b6118",
+        "type": "Modbus-com",
+        "z": "",
+        "name": "",
+        "refreshCycle": "5",
+        "maxDataNum": "64",
+        "noBlank": false,
+        "comType": "TCP",
+        "TCPPort": "502",
+        "IPAdd": "192.168.1.20",
+        "unitID": "255",
+        "serialPort": "",
+        "serialAdd": "1",
+        "baud": "115200",
+        "parity": "even",
+        "requiredSet": "ready"
+    },
+    {
+        "id": "33b7110e.982cde",
+        "type": "ui_group",
+        "z": "",
+        "name": "機能ノードグラフ",
+        "tab": "1b32cfcb.8409e",
+        "order": 2,
+        "disp": true,
+        "width": "13",
+        "collapse": false
+    },
+    {
+        "id": "5f4c3472.ab8b3c",
+        "type": "ui_group",
+        "z": "",
+        "name": "PLCノード",
+        "tab": "1b32cfcb.8409e",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "3ff09f25.16773",
+        "type": "GPi-range-sensor",
+        "z": "f623f978.413298",
+        "name": "",
+        "grovepi": "6cf68ba.0234374",
+        "din": "2",
+        "cycle": 1,
+        "storeInterval": "120",
+        "storeAsync": true,
+        "objectKey": "rangeKey",
+        "objectDescription": "距離センサ",
+        "dataName": "距離",
+        "unit": "cm",
+        "lLimit": "10",
+        "hLimit": "50",
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "3e1e3004.ee4f6",
+                "2aad4bee.d1a2a4"
+            ]
+        ]
+    },
+    {
+        "id": "e437b426.e32b78",
+        "type": "GPi-DHT-sensor",
+        "z": "f623f978.413298",
+        "name": "",
+        "grovepi": "6cf68ba.0234374",
+        "din": "4",
+        "cycle": "10",
+        "storeInterval": "150",
+        "storeAsync": true,
+        "objectKey": "DHTKey",
+        "objectDescription": "温湿度度センサ",
+        "tempDataName": "温度",
+        "tempUnit": "°C",
+        "humDataName": "湿度",
+        "humUnit": "%",
+        "hIndexDataName": "熱指数",
+        "x": 140,
+        "y": 200,
+        "wires": [
+            [
+                "3e1e3004.ee4f6",
+                "2aad4bee.d1a2a4",
+                "7007015e.98fbc",
+                "9eaddb0d.775ca8"
+            ]
+        ]
+    },
+    {
+        "id": "3e1e3004.ee4f6",
+        "type": "ia-cloud-cnct2",
+        "z": "f623f978.413298",
+        "ccsConnectionConfig": "7c844f6c.a560e",
+        "name": "",
+        "FDSKey": "Handson2019User0",
+        "comment": "デモトランク",
+        "cnctRetryInterval": 60,
+        "tappingInterval": 24,
+        "x": 530,
+        "y": 120,
+        "wires": [
+            [
+                "c000f11b.2c19a"
+            ]
+        ]
+    },
+    {
+        "id": "5b77ac35.d6cef4",
+        "type": "GPi-button-sensor",
+        "z": "f623f978.413298",
+        "name": "",
+        "grovepi": "6cf68ba.0234374",
+        "din": "3",
+        "storeInterval": "180",
+        "storeAsync": true,
+        "objectKey": "buttonKey",
+        "objectDescription": "GrovePiボタン",
+        "dataName": "ボタン",
+        "mode": "onOff",
+        "x": 120,
+        "y": 300,
+        "wires": [
+            [
+                "bbab9832.2ce158",
+                "3e1e3004.ee4f6"
+            ]
+        ]
+    },
+    {
+        "id": "bbab9832.2ce158",
+        "type": "unpack",
+        "z": "f623f978.413298",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "ボタン",
+                "dataLabel": ""
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 380,
+        "y": 300,
+        "wires": [
+            [
+                "ed4109b.a0413f8",
+                "cd596702.d04a88"
+            ]
+        ]
+    },
+    {
+        "id": "ed4109b.a0413f8",
+        "type": "GPi-LED",
+        "z": "f623f978.413298",
+        "name": "",
+        "grovepi": "6cf68ba.0234374",
+        "din": "7",
+        "x": 640,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c000f11b.2c19a",
+        "type": "debug",
+        "z": "f623f978.413298",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "2aad4bee.d1a2a4",
+        "type": "debug",
+        "z": "f623f978.413298",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "7007015e.98fbc",
+        "type": "unpack",
+        "z": "f623f978.413298",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "温度",
+                "dataLabel": ""
+            },
+            {
+                "objectKey": "",
+                "dataName": "湿度",
+                "dataLabel": ""
+            }
+        ],
+        "outputs": 2,
+        "configReady": "ready",
+        "x": 390,
+        "y": 480,
+        "wires": [
+            [
+                "7aa4f8e4.4242c8",
+                "4dba3049.4ec44"
+            ],
+            [
+                "7aa4f8e4.4242c8",
+                "4dba3049.4ec44"
+            ]
+        ]
+    },
+    {
+        "id": "7aa4f8e4.4242c8",
+        "type": "debug",
+        "z": "f623f978.413298",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "4dba3049.4ec44",
+        "type": "ui_chart",
+        "z": "f623f978.413298",
+        "name": "",
+        "group": "15990d03.1725d3",
+        "order": 2,
+        "width": "12",
+        "height": "4",
+        "label": "温湿度データ",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 680,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cd596702.d04a88",
+        "type": "ui_lamps",
+        "z": "f623f978.413298",
+        "group": "15990d03.1725d3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "lamps",
+        "direction": "Vertical",
+        "display_settings": "[{\"phase\":\"Square\",\"color\":\"Red\"}]",
+        "x": 570,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "94cd915.59cee7",
+        "type": "comment",
+        "z": "f623f978.413298",
+        "name": "この出力メッセージ形式は、整合していない。",
+        "info": "この出力メッセージ形式は、整合していない。\n\n\n１ビットの時は、\nmsg.payload: value\nも入力できるように。\n\n通常は、\nmsg.payload: [value, ....]\n\nもちろん、１ビットでも\nmsg.payload: [value]\nはOKなように。",
+        "x": 560,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "fd2c4100.cb5af",
+        "type": "inject",
+        "z": "d4e805cf.0caf68",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "42b41835.cdb3f8"
+            ]
+        ]
+    },
+    {
+        "id": "51a87128.a823e",
+        "type": "debug",
+        "z": "d4e805cf.0caf68",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 450,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "14bc3b9.7805dc4",
+        "type": "ia-cloud-cnct2",
+        "z": "d4e805cf.0caf68",
+        "ccsConnectionConfig": "7c844f6c.a560e",
+        "name": "",
+        "FDSKey": "Handson2019User0_cliperFlow",
+        "comment": "ノギスフローから",
+        "cnctRetryInterval": 60,
+        "tappingInterval": 24,
+        "x": 430,
+        "y": 100,
+        "wires": [
+            [
+                "368ceefc.cd7042"
+            ]
+        ]
+    },
+    {
+        "id": "368ceefc.cd7042",
+        "type": "debug",
+        "z": "d4e805cf.0caf68",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "42b41835.cdb3f8",
+        "type": "caliper-Mitsutoyo",
+        "z": "d4e805cf.0caf68",
+        "name": "",
+        "objectName": "",
+        "objectKey": "caliperKey",
+        "objectDescription": "ノギス寸法計測",
+        "contentType": "iaCloudData",
+        "dataParams": [
+            {
+                "dataName": "製品幅"
+            },
+            {
+                "dataName": "製品長さ"
+            },
+            {
+                "dataName": "製品高さ"
+            }
+        ],
+        "x": 220,
+        "y": 200,
+        "wires": [
+            [
+                "14bc3b9.7805dc4",
+                "51a87128.a823e"
+            ]
+        ]
+    },
+    {
+        "id": "da46b2ba.e3174",
+        "type": "ia-cloud-cnct2",
+        "z": "3a0f9008.fe3fc",
+        "ccsConnectionConfig": "7c844f6c.a560e",
+        "name": "",
+        "FDSKey": "Handson2019User0-PLC",
+        "comment": "PLCデータ",
+        "cnctRetryInterval": 60,
+        "tappingInterval": 24,
+        "x": 450,
+        "y": 120,
+        "wires": [
+            [
+                "87a121cf.40dcf"
+            ]
+        ]
+    },
+    {
+        "id": "87a121cf.40dcf",
+        "type": "debug",
+        "z": "3a0f9008.fe3fc",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "3ddabcce.ac04d4",
+        "type": "PLC-Modbus",
+        "z": "3a0f9008.fe3fc",
+        "name": "",
+        "comNode": "7d4bd6f5.2b6118",
+        "contentType": "ModbusPLC",
+        "storeInterval": "300",
+        "storeAsync": false,
+        "objectKey": "ModbusPLCKey",
+        "objectDescription": "モドバスPLCデータ",
+        "configReady": "ready",
+        "dataItems": [
+            {
+                "itemType": "bit",
+                "dataName": "bitデータ",
+                "bit": {
+                    "deviceType": "IS",
+                    "address": 200,
+                    "number": 16,
+                    "logic": "pos"
+                }
+            },
+            {
+                "itemType": "number",
+                "dataName": "1時間リセット",
+                "number": {
+                    "deviceType": "HR",
+                    "address": 106,
+                    "type": "2w-l",
+                    "encode": "unsigned",
+                    "offset": 0,
+                    "gain": 1,
+                    "unit": ""
+                }
+            }
+        ],
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "da46b2ba.e3174"
+            ]
+        ]
+    },
+    {
+        "id": "33c72c5c.776414",
+        "type": "smoothing",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "params": [
+            {
+                "objectKey": "",
+                "dataName": "温度",
+                "range": 50,
+                "initTime": 0
+            },
+            {
+                "objectKey": "",
+                "dataName": "湿度",
+                "range": 50,
+                "initTime": 0
+            }
+        ],
+        "configReady": "ready",
+        "x": 320,
+        "y": 60,
+        "wires": [
+            [
+                "4ad15b02.4662d4"
+            ]
+        ]
+    },
+    {
+        "id": "4ad15b02.4662d4",
+        "type": "unpack",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "温度",
+                "dataLabel": "平均化温度"
+            },
+            {
+                "objectKey": "",
+                "dataName": "湿度",
+                "dataLabel": "平均化湿度"
+            }
+        ],
+        "outputs": 2,
+        "configReady": "ready",
+        "x": 510,
+        "y": 60,
+        "wires": [
+            [
+                "216d3c9f.969e54"
+            ],
+            [
+                "3665b3b3.91a12c"
+            ]
+        ]
+    },
+    {
+        "id": "acd2014b.52cc4",
+        "type": "unpack",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "温度",
+                "dataLabel": ""
+            },
+            {
+                "objectKey": "",
+                "dataName": "湿度",
+                "dataLabel": ""
+            }
+        ],
+        "outputs": 2,
+        "configReady": "ready",
+        "x": 450,
+        "y": 140,
+        "wires": [
+            [
+                "216d3c9f.969e54"
+            ],
+            [
+                "3665b3b3.91a12c"
+            ]
+        ]
+    },
+    {
+        "id": "3665b3b3.91a12c",
+        "type": "ui_chart",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "group": "33b7110e.982cde",
+        "order": 4,
+        "width": "12",
+        "height": "4",
+        "label": "湿度データ移動平均",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "50",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 760,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9eaddb0d.775ca8",
+        "type": "link out",
+        "z": "f623f978.413298",
+        "name": "機能ノードフローへ",
+        "links": [
+            "93ea5815.58c828"
+        ],
+        "x": 435,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "93ea5815.58c828",
+        "type": "link in",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "links": [
+            "9eaddb0d.775ca8"
+        ],
+        "x": 135,
+        "y": 100,
+        "wires": [
+            [
+                "33c72c5c.776414",
+                "acd2014b.52cc4"
+            ]
+        ]
+    },
+    {
+        "id": "d2da929.030a07",
+        "type": "function",
+        "z": "80dc006.af6d6",
+        "name": "sine波オブジェクト",
+        "func": "// もしまだカウンタが存在していなければ0に初期化\nvar count = context.get('count')||0;\ncount += 1;\nif (count > 360) count = 0\n// 値を書き戻して保存\ncontext.set('count',count);\nvalue = Math.sin(count * (Math.PI / 180));\nif(count % 75 === 0) {\n    value += 0.2;\n}\n\nmsg.request = \"store\";\nmsg.dataObject = {\n    objectKey: \"dummy\",\n    objectContent: {\n        contentType: \"iaCloudData\",\n        contentData:[\n            {\n                dataName: \"sine\",\n                dataValue: Number(value.toFixed(2))\n            }\n            ]\n    }\n    \n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 150,
+        "y": 300,
+        "wires": [
+            [
+                "61912ef0.830a3",
+                "2ee00739.69c768",
+                "ead4d0bf.7d09",
+                "f2ec5701.5dcd98",
+                "6042f220.9b25fc",
+                "b0f67496.633378"
+            ]
+        ]
+    },
+    {
+        "id": "1fcf50cf.b853ef",
+        "type": "inject",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 130,
+        "y": 220,
+        "wires": [
+            [
+                "d2da929.030a07"
+            ]
+        ]
+    },
+    {
+        "id": "61912ef0.830a3",
+        "type": "unpack",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "dataLabel": "元波形"
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 450,
+        "y": 300,
+        "wires": [
+            [
+                "82dcc5d.785da38",
+                "b0d8920e.805eb"
+            ]
+        ]
+    },
+    {
+        "id": "82dcc5d.785da38",
+        "type": "ui_chart",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "group": "33b7110e.982cde",
+        "order": 1,
+        "width": "12",
+        "height": "4",
+        "label": "サイン波元データ",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#ff0000",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 790,
+        "y": 300,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "2ee00739.69c768",
+        "type": "debug",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "ead4d0bf.7d09",
+        "type": "de-noise",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "params": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "disp": 0.15,
+                "interval": 0
+            }
+        ],
+        "configReady": "ready",
+        "x": 310,
+        "y": 380,
+        "wires": [
+            [
+                "3dfe00ae.5eb81"
+            ]
+        ]
+    },
+    {
+        "id": "3dfe00ae.5eb81",
+        "type": "unpack",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "dataLabel": "ノイズ除去データ"
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 560,
+        "y": 380,
+        "wires": [
+            [
+                "f915b5ba.2ff128"
+            ]
+        ]
+    },
+    {
+        "id": "f915b5ba.2ff128",
+        "type": "ui_chart",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "group": "33b7110e.982cde",
+        "order": 2,
+        "width": "12",
+        "height": "4",
+        "label": "ノイズ除去データ",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 790,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f2ec5701.5dcd98",
+        "type": "evaluation",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "actionType": "bool",
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "mode": "range",
+                "equal": "0",
+                "notequal": "0",
+                "rangeLo": "-0.1",
+                "rangeHi": "0.1",
+                "notrangeLo": "0",
+                "notrangeHi": "0"
+            }
+        ],
+        "configReady": "ready",
+        "x": 310,
+        "y": 460,
+        "wires": [
+            [
+                "7b8aeec2.a7f5c"
+            ]
+        ]
+    },
+    {
+        "id": "216d3c9f.969e54",
+        "type": "ui_chart",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "group": "33b7110e.982cde",
+        "order": 3,
+        "width": "12",
+        "height": "4",
+        "label": "温度データ移動平均",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "20",
+        "ymax": "40",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 760,
+        "y": 60,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "6042f220.9b25fc",
+        "type": "evaluation",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "actionType": "bool",
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "mode": "notrange",
+                "equal": "0",
+                "notequal": "0",
+                "rangeLo": "0",
+                "rangeHi": "0",
+                "notrangeLo": "-0.98",
+                "notrangeHi": "0.5"
+            }
+        ],
+        "configReady": "ready",
+        "x": 310,
+        "y": 520,
+        "wires": [
+            [
+                "2456ea23.871876",
+                "6bbe8ea2.73e6a"
+            ]
+        ]
+    },
+    {
+        "id": "b0f67496.633378",
+        "type": "evaluation",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "actionType": "bool",
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "mode": "range",
+                "equal": "0",
+                "notequal": "0",
+                "rangeLo": "0",
+                "rangeHi": "",
+                "notrangeLo": "0",
+                "notrangeHi": "0"
+            }
+        ],
+        "configReady": "ready",
+        "x": 310,
+        "y": 580,
+        "wires": [
+            [
+                "70eb1435.2ef96c"
+            ]
+        ]
+    },
+    {
+        "id": "2456ea23.871876",
+        "type": "change-detect",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "params": [
+            {
+                "objectKey": "",
+                "dataName": "",
+                "ondelay": 30,
+                "offdelay": 20
+            }
+        ],
+        "configReady": "ready",
+        "x": 470,
+        "y": 680,
+        "wires": [
+            [
+                "49e87114.9ebad"
+            ]
+        ]
+    },
+    {
+        "id": "49e87114.9ebad",
+        "type": "unpack",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "dataName": "",
+        "bool10": true,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "dataLabel": "ON/OFF遅延"
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 650,
+        "y": 680,
+        "wires": [
+            [
+                "2e91b29c.bfd75e"
+            ]
+        ]
+    },
+    {
+        "id": "b0d8920e.805eb",
+        "type": "ui_chart",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "group": "33b7110e.982cde",
+        "order": 5,
+        "width": "12",
+        "height": "4",
+        "label": "評価",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "10",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 830,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "7b8aeec2.a7f5c",
+        "type": "unpack",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "dataName": "",
+        "bool10": true,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "dataLabel": "範囲内"
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 590,
+        "y": 460,
+        "wires": [
+            [
+                "b0d8920e.805eb"
+            ]
+        ]
+    },
+    {
+        "id": "6bbe8ea2.73e6a",
+        "type": "unpack",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "dataName": "",
+        "bool10": true,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "dataLabel": "範囲外"
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 590,
+        "y": 520,
+        "wires": [
+            [
+                "b0d8920e.805eb",
+                "2e91b29c.bfd75e"
+            ]
+        ]
+    },
+    {
+        "id": "70eb1435.2ef96c",
+        "type": "unpack",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "dataName": "",
+        "bool10": true,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "sine",
+                "dataLabel": "プラス"
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 590,
+        "y": 580,
+        "wires": [
+            [
+                "b0d8920e.805eb"
+            ]
+        ]
+    },
+    {
+        "id": "b4bca774.f74278",
+        "type": "PLC-Modbus-AE",
+        "z": "3a0f9008.fe3fc",
+        "name": "",
+        "comNode": "7d4bd6f5.2b6118",
+        "contentType": "Alarm&Event",
+        "storeInterval": "0",
+        "storeAsync": true,
+        "objectKey": "ModbusPLCA&E",
+        "objectDescription": "モドバスPLCのアラーム＆イベント",
+        "configReady": "ready",
+        "dataItems": [
+            {
+                "itemType": "AnE",
+                "commonName": "Alarm&Event",
+                "AnE": {
+                    "deviceType": "Coil",
+                    "address": 102,
+                    "logic": "pos",
+                    "AnECode": "%M102",
+                    "AnEDesc": "1時間毎アラーム"
+                }
+            }
+        ],
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "da46b2ba.e3174"
+            ]
+        ]
+    },
+    {
+        "id": "b5035f8a.994af",
+        "type": "PLC-Mitsubishi",
+        "z": "3a0f9008.fe3fc",
+        "name": "",
+        "comNode": "86f9e211.c6541",
+        "contentType": "MitsubishiPLC",
+        "storeInterval": "300",
+        "storeAsync": false,
+        "objectKey": "MitubishiPLCKey",
+        "objectDescription": "三菱PLCデータ",
+        "configReady": "ready",
+        "dataItems": [
+            {
+                "itemType": "bit",
+                "dataName": "ビット列",
+                "bit": {
+                    "deviceType": "M",
+                    "address": 200,
+                    "number": 8,
+                    "logic": "pos"
+                }
+            },
+            {
+                "itemType": "number",
+                "dataName": "1時間リセット",
+                "number": {
+                    "deviceType": "D",
+                    "address": 106,
+                    "type": "2w-l",
+                    "encode": "unsigned",
+                    "offset": 0,
+                    "gain": 1,
+                    "unit": ""
+                }
+            },
+            {
+                "itemType": "string",
+                "dataName": "文字列",
+                "string": {
+                    "deviceType": "D",
+                    "address": 200,
+                    "number": 8,
+                    "encode": "sJIS"
+                }
+            }
+        ],
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "da46b2ba.e3174"
+            ]
+        ]
+    },
+    {
+        "id": "b1b25216.e106a",
+        "type": "PLC-Mitsubishi-AE",
+        "z": "3a0f9008.fe3fc",
+        "name": "",
+        "comNode": "86f9e211.c6541",
+        "contentType": "Alarm&Event",
+        "storeInterval": "0",
+        "storeAsync": true,
+        "objectKey": "MitsubishiPLCA&EKey",
+        "objectDescription": "三菱PLCアラーム＆イベント",
+        "configReady": "ready",
+        "dataItems": [
+            {
+                "itemType": "AnE",
+                "commonName": "Alarm&Event",
+                "AnE": {
+                    "deviceType": "M",
+                    "address": 318,
+                    "logic": "pos",
+                    "AnECode": "318",
+                    "AnEDesc": "アラーム中"
+                }
+            }
+        ],
+        "x": 160,
+        "y": 160,
+        "wires": [
+            [
+                "da46b2ba.e3174"
+            ]
+        ]
+    },
+    {
+        "id": "2e91b29c.bfd75e",
+        "type": "ui_chart",
+        "z": "80dc006.af6d6",
+        "name": "",
+        "group": "33b7110e.982cde",
+        "order": 6,
+        "width": "12",
+        "height": "4",
+        "label": "遅延",
+        "chartType": "line",
+        "legend": "true",
+        "xformat": "HH:mm:ss",
+        "interpolate": "step",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": "10",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "60",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 830,
+        "y": 680,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "71e3aeed.bf0ed",
+        "type": "PLC-Modbus",
+        "z": "3a0f9008.fe3fc",
+        "name": "",
+        "comNode": "7d4bd6f5.2b6118",
+        "contentType": "ModbusPLC",
+        "storeInterval": "10",
+        "storeAsync": false,
+        "objectKey": "dummy",
+        "objectDescription": "",
+        "configReady": "ready",
+        "dataItems": [
+            {
+                "itemType": "number",
+                "dataName": "1分リセット",
+                "number": {
+                    "deviceType": "HR",
+                    "address": 102,
+                    "type": "2w-l",
+                    "encode": "unsigned",
+                    "offset": 0,
+                    "gain": 1,
+                    "unit": ""
+                }
+            },
+            {
+                "itemType": "number",
+                "dataName": "10分リセット",
+                "number": {
+                    "deviceType": "HR",
+                    "address": 104,
+                    "type": "2w-l",
+                    "encode": "unsigned",
+                    "offset": 0,
+                    "gain": 1,
+                    "unit": ""
+                }
+            },
+            {
+                "itemType": "number",
+                "dataName": "1時間リセット",
+                "number": {
+                    "deviceType": "HR",
+                    "address": 106,
+                    "type": "2w-l",
+                    "encode": "unsigned",
+                    "offset": 0,
+                    "gain": 1,
+                    "unit": ""
+                }
+            },
+            {
+                "itemType": "number",
+                "dataName": "1日リセット",
+                "number": {
+                    "deviceType": "HR",
+                    "address": 108,
+                    "type": "2w-l",
+                    "encode": "unsigned",
+                    "offset": 0,
+                    "gain": 1,
+                    "unit": ""
+                }
+            }
+        ],
+        "x": 130,
+        "y": 440,
+        "wires": [
+            [
+                "98a11297.fbbfe"
+            ]
+        ]
+    },
+    {
+        "id": "98a11297.fbbfe",
+        "type": "unpack",
+        "z": "3a0f9008.fe3fc",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "1分リセット",
+                "dataLabel": ""
+            },
+            {
+                "objectKey": "",
+                "dataName": "10分リセット",
+                "dataLabel": ""
+            },
+            {
+                "objectKey": "",
+                "dataName": "1時間リセット",
+                "dataLabel": ""
+            },
+            {
+                "objectKey": "",
+                "dataName": "1日リセット",
+                "dataLabel": ""
+            }
+        ],
+        "outputs": 4,
+        "configReady": "ready",
+        "x": 410,
+        "y": 440,
+        "wires": [
+            [
+                "9d881ce9.f82"
+            ],
+            [
+                "9d881ce9.f82"
+            ],
+            [
+                "27fc9846.832c78"
+            ],
+            [
+                "27fc9846.832c78"
+            ]
+        ]
+    },
+    {
+        "id": "9d881ce9.f82",
+        "type": "ui_chart",
+        "z": "3a0f9008.fe3fc",
+        "name": "",
+        "group": "5f4c3472.ab8b3c",
+        "order": 1,
+        "width": "12",
+        "height": "4",
+        "label": "PLC1秒カウント/時",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 720,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "27fc9846.832c78",
+        "type": "ui_chart",
+        "z": "3a0f9008.fe3fc",
+        "name": "",
+        "group": "5f4c3472.ab8b3c",
+        "order": 2,
+        "width": "12",
+        "height": "4",
+        "label": "PLC1秒カウント/日",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 720,
+        "y": 460,
+        "wires": [
+            []
+        ]
+    }
+]
