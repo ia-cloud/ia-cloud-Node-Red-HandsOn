@@ -7,7 +7,7 @@ https://www.realvnc.com/en/connect/download/viewer/
 ia-cloud 接続先  
 https://d9u5112h1j.execute-api.us-east-1.amazonaws.com/handson/api/iaCloud/rev10  
 
-DynamoDBデータ取得 接続先
+DynamoDBデータ取得 接続先  
 https://xfsjduorxc.execute-api.us-east-1.amazonaws.com/stage_1/iacloud/dynamoreq  
 
 AWS ログイン  
