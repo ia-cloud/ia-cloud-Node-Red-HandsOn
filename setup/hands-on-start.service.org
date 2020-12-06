@@ -4,7 +4,7 @@ After=local-fs.target
 ConditionPathExists=/opt/ia-cloud/bin
 
 [Service]
-ExecStart=/opt/ia-cloud/bin/ia-cloud-hands-on-start.sh
+ExecStart=/opt/ia-cloud/bin/hands-on-start.sh
 Restart=no
 Type=simple
 

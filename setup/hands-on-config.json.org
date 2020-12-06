@@ -2,14 +2,14 @@
     "name": "RaspberryPi configuration at the first boot",
     "comment": "test for configuration procedure",
     
-    "lan-config": {
+    "NA_lan-config": {
         "ip-address": "192.168.xx.xx/24",
         "default-gateway": "0.0.0.0"
     },
-    "wifi-config": {
+    "NA_wifi-config": {
         "type": "wpa",
         "ssid": "xxxxxxxxxx",
         "password": "xxxxxxxxx"
     },
-    "hostname": "xxxxxxxxx"
+    "NA_hostname": "xxxxxxxxx"
 }

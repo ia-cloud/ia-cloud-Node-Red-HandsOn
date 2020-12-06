@@ -2,8 +2,8 @@
 #
 
 # 設定情報ファイル名を変数にセット
-config_file="/boot/ia-cloud-hands-on-config.json"
-log_file="/var/log/ia-cloud-hands-on-start.log"
+config_file="/boot/ia-cloud/hands-on-config.json"
+log_file="/var/log/hands-on-start.log"
 
 # ログファイルにログを追記
 
@@ -103,6 +103,9 @@ if [ -r $config_file ]; then
         fi
     fi
 
+    # ファイルシステムの拡張
+    hostname=`cat $config_file | jq -r '."hostname"'`
+    
     # 設定ファイルの名称を変更
     mv $config_file $config_file.org
 
