@@ -17,7 +17,8 @@
 <img src="images/raspi-imager.png" width="400">
 <img src="images/raspi-imager-OS.png" width="400">
 
-- 使用するマイクロSDカードの容量は、最8GBである。
+- 使用するマイクロSDカードの容量は、最8GBである。  
+- 書き込みが終了すると、SDカードは取り外されるので、確認の上再度挿入する。
 
 ### RaspberryPiのネットワーク設定スクリプトおよび設定データを準備する　　
   
@@ -62,7 +63,7 @@ WantedBy=multi-user.target
 ```
 #### マイクロSDカードの/boot/ia-cloud にhands-on-start.shを配置する。  
 
-このスクリプトは/boot/ia-cloudに、hands-on-config.jsonが存在すると、それを読み込んで、そこに記述された内容によって、ネットワーク設定を変更するため以下のファイルを変更する。
+マイクロSDカードの/boot/ia-cloud にhands-on-start.shを配置する。このスクリプトは/boot/ia-cloudに、hands-on-config.jsonが存在すると、それを読み込んで、そこに記述された内容によって、ネットワーク設定を変更するため以下のファイルを変更する。
   * /etc/dhcpcd.conf
   * /etc/wpa_supplicant/wpa_supplicant.conf
   * /etc/test_hostname
@@ -73,7 +74,7 @@ WantedBy=multi-user.target
 変更後は、hands-on-config.json のファイル名を、自動でhands-on-config.json.org に変更し再起動を行う。  
 
 #### マイクロSDカードの/boot/ia-cloud にhands-on-config.json.org を配置する。  
-このファイルは、個別にネットワーク設定等を変更するスクリプト、hands-on-start.shが参照するデータファイルである。ハンズオンWS用の個別の起動マイクロSDカードの作成の際に、必要な設定を行なった後hands-on-config.jsonにファイル名変更して使用すること。  
+マイクロSDカードの/boot/ia-cloud にhands-on-config.json.org を配置する。 このファイルは、個別にネットワーク設定等を変更するスクリプト、hands-on-start.shが参照するデータファイルである。ハンズオンWS用の個別の起動マイクロSDカードの作成の際に、必要な設定を行なった後hands-on-config.jsonにファイル名変更して使用すること。  
 このファイルの内容は以下である。
 ```
 {
@@ -104,7 +105,11 @@ WantedBy=multi-user.target
 
 ### マイクロSDカードでRaspberry Pi OSを起動し設定を行う  
 
-- RaspberryPiに装着し起動（マウス・キーボード・モニタが必要）
+- RaspberryPiに装着し起動（マウス・キーボード・モニタ接続するか、IPアドレスが分かっていれば、SSHで接続する。）
+  - SSHで接続した場合は、sudo raspi-config を実行し、設定画面の
+  - 2.Disolay Options -> D1.Resolition -> DTM Mode 85 12880x720 60Hz 16:9 を選択設定
+  - 3.Interface Option -> P3.VNC -> Yes を選択設定し、VNCを有効にし、再起動
+  - 再起動後、同一アドレスでVNCでの接続を行い、以下の手順を実施する。
 - Raspberry Pi OSの初期画面が起動。初期設定画面に従い、インストールを継続
 - countryをJAPANに設定
 - piユーザのパスワード変更を求められるが無視して続行
@@ -127,7 +132,11 @@ WantedBy=multi-user.target
 /boot/ia-cloud/hands-on-install.sh
 ```
 このスクリプトは、以下の一連の手順を自動実行する。途中で、会話型の入力を求められるので「ｙ」を入力する必要がある。  
-  
+hands-on-install.shはの実行後、以下のようにリネイムして置くこと
+
+```
+sudo mv /boot/ia-cloud/hands-on-install.sh /boot/ia-cloud/hands-on-install.done 
+```
   
 ***
   
@@ -181,18 +190,7 @@ sudo systemctl daemon-reload
 sudo systemctl enable hands-on-start.service
 ```
 ***
-
-```
-/boot/ia-cloud/hands-on-install.sh
-```
-の実行後、このスクリプトファイルを以下のようにリネイムして置くこと
-
-```
-sudo mv /boot/ia-cloud/hands-on-install.sh /boot/ia-cloud/hands-on-install.done 
-```
-またヘッドレス設定のため、/boot に以下のファイルを置いた場合は、これらも削除しておくこと。
-- wpa_supplicant.conf
-- ssh
+以上で、RaspberryPiのNode-RED実行環境の構築は終了である。
 
 <br>
 
@@ -211,7 +209,7 @@ Node-REDを起動する。一度移行すると、
 
 #### Node-REDの動作環境設定ファイル setting.js の設定
 
-/home/pi/.node-redディレクトリーにある setting.js ファイルの、paletteCategories 定義文を以下のように書き換える。この定義文はオリジナルではコメントアウトされている。
+Node-RED起動後ファイルマネージャなどで、/home/pi/.node-redディレクトリーにある setting.js ファイルを見つけ、テキストエディタにて、paletteCategories 定義文を以下のように書き換える。この定義文はオリジナルではコメントアウトされている。（/home/pi/.node-redは隠しファイルであるので、ファイルマネージャーでは隠しファイルを表示する設定が必要。）
 
 ```
 paletteCategories: ['subflows', 'common', 'iaCloud services', 'iaCloud devices', 'iaCloud functions'
