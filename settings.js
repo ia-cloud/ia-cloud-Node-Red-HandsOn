@@ -268,7 +268,7 @@ module.exports = {
     // added to the end of the palette.
     // If not set, the following default order is used:
 	paletteCategories: ['subflows', 'common', 'iaCloud services', 'iaCloud devices', 'iaCloud functions'
-				, 'iaCloud', 'iaCloud DB access', 'iaCloud visuals','iaCloud dashboard', 'dashboard'
+				, 'iaCloud', 'iaCloud DB acs', 'iaCloud Visuals','iaCloud dashboard', 'dashboard'
 				, 'function', 'network', 'sequence', 'parser', 'storage'],
 
     // Configure the logging output
