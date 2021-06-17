@@ -1,1 +1,323 @@
-
+[
+    {
+        "id": "5267f2c6.b24c0c",
+        "type": "tab",
+        "label": "PLC/Modbus FDS⇒CCSデモ",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f4eb39fd.e397e8",
+        "type": "Mitsubishi-com",
+        "z": "",
+        "name": "",
+        "refreshCycle": "2",
+        "maxDataNum": "64",
+        "noBlank": false,
+        "comType": "PLCSim",
+        "TCPPort": "1025",
+        "IPAdd": "localhost",
+        "serialPort": "",
+        "baud": "115200",
+        "parity": "even",
+        "accessRoute": "",
+        "requiredSet": "ready"
+    },
+    {
+        "id": "aa98f051.eae79",
+        "type": "ia-cloud-ccs-connection-config",
+        "z": "",
+        "url": "https://d9u5112h1j.execute-api.us-east-1.amazonaws.com/handson/api/iaCloud/rev10",
+        "name": "ia-cloudデモ環境"
+    },
+    {
+        "id": "f602bd13.6324e",
+        "type": "Modbus-com",
+        "z": "",
+        "name": "",
+        "refreshCycle": "2",
+        "maxDataNum": "64",
+        "noBlank": false,
+        "comType": "PLCSim",
+        "TCPPort": "502",
+        "IPAdd": "",
+        "unitID": "255",
+        "serialPort": "",
+        "serialAdd": "1",
+        "baud": "115200",
+        "parity": "even",
+        "requiredSet": "ready"
+    },
+    {
+        "id": "d7f2fe3.4dec5",
+        "type": "ui_tab",
+        "z": "",
+        "name": "ホーム",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "68aff083.3b0c1",
+        "type": "ui_group",
+        "z": "",
+        "name": "デフォルト",
+        "tab": "d7f2fe3.4dec5",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "b422178f.247388",
+        "type": "ia-cloud-cnct2",
+        "z": "5267f2c6.b24c0c",
+        "ccsConnectionConfig": "aa98f051.eae79",
+        "name": "",
+        "FDSKey": "Handson2021User0",
+        "comment": "",
+        "cnctRetryInterval": 60,
+        "tappingInterval": 24,
+        "x": 350,
+        "y": 280,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e79e33ab.0968e",
+        "type": "PLC-Mitsubishi",
+        "z": "5267f2c6.b24c0c",
+        "name": "",
+        "comNode": "f4eb39fd.e397e8",
+        "contentType": "MitsubishiPLC",
+        "storeInterval": "3",
+        "storeAsync": false,
+        "objectKey": "com.ia-cloud.demo",
+        "objectDescription": "",
+        "configReady": "ready",
+        "dataItems": [
+            {
+                "itemType": "bit",
+                "dataName": "テスト",
+                "bit": {
+                    "deviceType": "M",
+                    "address": 30,
+                    "form": "AnE",
+                    "logic": "pos"
+                }
+            },
+            {
+                "itemType": "number",
+                "dataName": "温度",
+                "number": {
+                    "deviceType": "D",
+                    "address": 100,
+                    "type": "1w",
+                    "encode": "unsigned",
+                    "offset": 0,
+                    "gain": 1,
+                    "unit": "℃"
+                }
+            }
+        ],
+        "x": 120,
+        "y": 140,
+        "wires": [
+            [
+                "b422178f.247388",
+                "6b98aedb.ed863",
+                "3135fdf9.15c052"
+            ]
+        ]
+    },
+    {
+        "id": "df9ecefa.9d38c",
+        "type": "debug",
+        "z": "5267f2c6.b24c0c",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "ef4edb33.d2ac68",
+        "type": "PLC-sim",
+        "z": "5267f2c6.b24c0c",
+        "interval": 1,
+        "name": "",
+        "x": 130,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "6b98aedb.ed863",
+        "type": "unpack",
+        "z": "5267f2c6.b24c0c",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "温度",
+                "dataLabel": ""
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 350,
+        "y": 180,
+        "wires": [
+            [
+                "df9ecefa.9d38c"
+            ]
+        ]
+    },
+    {
+        "id": "3135fdf9.15c052",
+        "type": "debug",
+        "z": "5267f2c6.b24c0c",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "9f3c35cb.a7b548",
+        "type": "PLC-Modbus",
+        "z": "5267f2c6.b24c0c",
+        "name": "",
+        "comNode": "f602bd13.6324e",
+        "contentType": "ModbusPLC",
+        "storeInterval": "3",
+        "storeAsync": false,
+        "objectKey": "modbustest",
+        "objectDescription": "",
+        "configReady": "ready",
+        "dataItems": [
+            {
+                "itemType": "number",
+                "dataName": "テスト",
+                "number": {
+                    "deviceType": "HR",
+                    "address": 9218,
+                    "type": "1w",
+                    "encode": "unsigned",
+                    "offset": 0,
+                    "gain": 1,
+                    "unit": "？"
+                }
+            }
+        ],
+        "x": 110,
+        "y": 420,
+        "wires": [
+            [
+                "9543b9b5.5dd698",
+                "b422178f.247388"
+            ]
+        ]
+    },
+    {
+        "id": "b40738b4.a7beb8",
+        "type": "debug",
+        "z": "5267f2c6.b24c0c",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 570,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "9543b9b5.5dd698",
+        "type": "unpack",
+        "z": "5267f2c6.b24c0c",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "テスト",
+                "dataLabel": ""
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 350,
+        "y": 420,
+        "wires": [
+            [
+                "b40738b4.a7beb8",
+                "a6d48659.dad528"
+            ]
+        ]
+    },
+    {
+        "id": "a6d48659.dad528",
+        "type": "ui_chart",
+        "z": "5267f2c6.b24c0c",
+        "name": "",
+        "group": "68aff083.3b0c1",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "chart",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 550,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    }
+]
