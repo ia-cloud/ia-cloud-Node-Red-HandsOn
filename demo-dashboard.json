@@ -1,0 +1,198 @@
+[
+    {
+        "id": "536f318a.8b669",
+        "type": "tab",
+        "label": "キックオフセミナーデモ",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1dc692f3.611a5d",
+        "type": "getlatestdata",
+        "z": "536f318a.8b669",
+        "name": "温度取得",
+        "ccsConnectionConfig": "12bd130c.68cf8d",
+        "tableName": "Handson2021User0",
+        "objectKey": "com.ia-cloud.demo",
+        "decimalPoint": "noexe",
+        "item": "graphData",
+        "repeatCheck": true,
+        "repeat": "1",
+        "params": [
+            {
+                "dataName": "温度",
+                "displayName": "温度"
+            }
+        ],
+        "x": 400,
+        "y": 260,
+        "wires": [
+            [
+                "3a4bc6ea.8a39ba"
+            ]
+        ]
+    },
+    {
+        "id": "3a4bc6ea.8a39ba",
+        "type": "ui_gauge",
+        "z": "536f318a.8b669",
+        "name": "",
+        "group": "ca0d1057.14f1c",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "温度ゲージ",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "30",
+        "seg2": "35",
+        "x": 650,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "4ac93dbf.99a454",
+        "type": "ui_chart",
+        "z": "536f318a.8b669",
+        "name": "",
+        "group": "ca0d1057.14f1c",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "温度・湿度　トレンドグラフ",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 700,
+        "y": 160,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ae203c56.38b7b",
+        "type": "debug",
+        "z": "536f318a.8b669",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 650,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "e513c404.105b98",
+        "type": "getchartdata",
+        "z": "536f318a.8b669",
+        "name": "温度・湿度取得",
+        "ccsConnectionConfig": "12bd130c.68cf8d",
+        "tableName": "Handson2021User0",
+        "objectKey": "com.ia-cloud.demo",
+        "dateCheck": "inNodeSetting",
+        "sdatetime": "",
+        "edatetime": "",
+        "repeatCheck": false,
+        "repeat": "10",
+        "aggregationCheck": false,
+        "aggregation": "max",
+        "aggreunit": "minute",
+        "decimalPoint": "noexe",
+        "sort": "true",
+        "limit": "100",
+        "params": [
+            {
+                "dataName": "温度",
+                "displayName": "温度"
+            }
+        ],
+        "x": 400,
+        "y": 100,
+        "wires": [
+            [
+                "ae203c56.38b7b",
+                "4ac93dbf.99a454"
+            ]
+        ]
+    },
+    {
+        "id": "3ab8492.2d073b6",
+        "type": "ui_dateset",
+        "z": "536f318a.8b669",
+        "group": "ca0d1057.14f1c",
+        "name": "温度・湿度　更新",
+        "order": 1,
+        "width": "6",
+        "height": "2",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "e513c404.105b98"
+            ]
+        ]
+    },
+    {
+        "id": "12bd130c.68cf8d",
+        "type": "ia-cloud-ccs-connection-config",
+        "z": "",
+        "url": "https://xfsjduorxc.execute-api.us-east-1.amazonaws.com/stage_1/iacloud/dynamoreq",
+        "name": "HandsonWS_DynamoDB"
+    },
+    {
+        "id": "ca0d1057.14f1c",
+        "type": "ui_group",
+        "z": "",
+        "name": "温度",
+        "tab": "15a7b6c8.035d39",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "15a7b6c8.035d39",
+        "type": "ui_tab",
+        "z": "",
+        "name": "キックオフセミナーデモ",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
