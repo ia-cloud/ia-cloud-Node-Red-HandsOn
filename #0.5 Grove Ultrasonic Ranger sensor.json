@@ -1,0 +1,323 @@
+[
+    {
+        "id": "5db4224a9262b4f3",
+        "type": "tab",
+        "label": "超音波センサー",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "cd09bd7195298ef5",
+        "type": "grovepi",
+        "name": "Grove-Piボード"
+    },
+    {
+        "id": "b514c77725b7f5f7",
+        "type": "ui_tab",
+        "name": "ダッシュボード",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "b34302e8e87d9ed6",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey",
+                "palette": "light"
+            }
+        },
+        "site": {
+            "name": "Node-RED ダッシュボード",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "YYYY/MM/DD",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "696d1443141b271c",
+        "type": "ui_group",
+        "name": "IoTセンサー",
+        "tab": "b514c77725b7f5f7",
+        "order": 1,
+        "disp": true,
+        "width": "24",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9e79baa0d0b9b9fa",
+        "type": "GPi-range-sensor",
+        "z": "5db4224a9262b4f3",
+        "name": "",
+        "grovepi": "cd09bd7195298ef5",
+        "din": "2",
+        "cycle": "2",
+        "storeInterval": "2",
+        "storeAsync": true,
+        "objectKey": "Handson2022UserXX",
+        "objectDescription": "",
+        "dataName": "距離",
+        "unit": "cm",
+        "lLimit": "",
+        "hLimit": "",
+        "x": 150,
+        "y": 60,
+        "wires": [
+            [
+                "a15454d41f51d561"
+            ]
+        ]
+    },
+    {
+        "id": "eebbf89221672e09",
+        "type": "GPi-LED",
+        "z": "5db4224a9262b4f3",
+        "name": "",
+        "grovepi": "cd09bd7195298ef5",
+        "din": "3",
+        "x": 750,
+        "y": 140,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a15454d41f51d561",
+        "type": "unpack",
+        "z": "5db4224a9262b4f3",
+        "name": "",
+        "dataName": "",
+        "bool10": false,
+        "rules": [
+            {
+                "objectKey": "",
+                "dataName": "距離",
+                "dataLabel": ""
+            }
+        ],
+        "outputs": 1,
+        "configReady": "ready",
+        "x": 390,
+        "y": 60,
+        "wires": [
+            [
+                "e2622e1f3528aeb6",
+                "c0eaa8f392db817f",
+                "9323db2af86cd070"
+            ]
+        ]
+    },
+    {
+        "id": "c0eaa8f392db817f",
+        "type": "switch",
+        "z": "5db4224a9262b4f3",
+        "name": "近づいているか？",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "30",
+                "vt": "str"
+            },
+            {
+                "t": "else"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 410,
+        "y": 140,
+        "wires": [
+            [
+                "2a21004df9beb770"
+            ],
+            [
+                "2ef30695ffd17fd5"
+            ]
+        ]
+    },
+    {
+        "id": "e2622e1f3528aeb6",
+        "type": "debug",
+        "z": "5db4224a9262b4f3",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "2a21004df9beb770",
+        "type": "change",
+        "z": "5db4224a9262b4f3",
+        "name": "ON",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "true",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 120,
+        "wires": [
+            [
+                "eebbf89221672e09"
+            ]
+        ]
+    },
+    {
+        "id": "2ef30695ffd17fd5",
+        "type": "change",
+        "z": "5db4224a9262b4f3",
+        "name": "OFF",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "false",
+                "tot": "bool"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 590,
+        "y": 160,
+        "wires": [
+            [
+                "eebbf89221672e09"
+            ]
+        ]
+    },
+    {
+        "id": "9323db2af86cd070",
+        "type": "ui_gauge",
+        "z": "5db4224a9262b4f3",
+        "name": "距離",
+        "group": "696d1443141b271c",
+        "order": 0,
+        "width": "24",
+        "height": "8",
+        "gtype": "gage",
+        "title": "距離",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 370,
+        "y": 200,
+        "wires": []
+    }
+]
