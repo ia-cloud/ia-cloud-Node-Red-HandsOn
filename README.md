@@ -18,3 +18,10 @@ https://signin.aws.amazon.com/console
 * アカウント: ``510671781299``
 * ユーザー名: ``Handson2020User``
 * パスワード: 配布されているもの
+
+
+
+
+サンプルアプリ
+https://atbridge-my.sharepoint.com/:u:/g/personal/hashisan_atbridge_onmicrosoft_com/EcmlDN76BfpHvSMNYQ8aRBIBkDgP3EPybRU0EMHxJTVX8w?e=w5CLd5
+
